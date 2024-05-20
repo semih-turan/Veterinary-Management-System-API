@@ -8,6 +8,5 @@ public interface AvailableDateService {
     AvailableDate getById(long id);
     AvailableDate update(AvailableDate availableDate);
     boolean deleteById(long id);
-
     boolean forceDeleteById(long id);
 }

@@ -13,7 +13,7 @@ public interface AnimalService {
 
     List<Animal> getAnimalByName(String name);
 
-    List<Animal> getCustomerId(long animalCustomerId);
-    List<Animal> getCustomerName(String name);
+    List<Animal> getCustomerById(long animalCustomerId);
+    List<Animal> getCustomerByName(String name);
 
 }

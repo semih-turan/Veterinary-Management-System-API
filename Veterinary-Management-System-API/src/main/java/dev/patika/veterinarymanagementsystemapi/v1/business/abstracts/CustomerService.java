@@ -9,9 +9,10 @@ public interface CustomerService {
 
     Customer save(Customer customer);
     Customer getById(long id);
+    List<Customer> getByCustomerName(String name);
+    List<Animal> getByAnimalId(long id);
     Customer update(Customer customer);
     boolean deleteById(long id);
 
-    List<Customer> getByCustomerName(String name);
-    List<Animal> getByAnimalId(long id);
+
 }
