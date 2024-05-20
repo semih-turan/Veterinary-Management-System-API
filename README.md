@@ -46,7 +46,7 @@ If you wish to contribute to the project, please create a pull request or open a
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ### UML Diagram
-UML Diagram
+![](./readmeAssets/UML.png)
 
 ### Contact
 For questions or suggestions, please contact us at semituran@gmail.com.
