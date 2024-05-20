@@ -1,8 +1,10 @@
 package dev.patika.veterinarymanagementsystemapi.v1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -34,5 +36,9 @@ public class Customer {
 
     @Column(name = "customer_city")
     private String city;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // Section - 9 : Relationships between entities
+    private List<Animal> animalList;
 
 }

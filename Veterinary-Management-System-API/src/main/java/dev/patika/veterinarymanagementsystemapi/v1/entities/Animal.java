@@ -1,9 +1,11 @@
 package dev.patika.veterinarymanagementsystemapi.v1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -38,5 +40,17 @@ public class Animal {
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
 
+    @ManyToOne(fetch = FetchType.EAGER) // Section - 9 : Relationships between entities
+    @JoinColumn(name = "animal_customer_id", referencedColumnName = "customer_id")
+    private Customer customer;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    // Section - 9 : Relationships between entities
+    private List<Vaccine> vaccines;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.REMOVE) // Section - 9 : Relationships between entities
+    private List<Appointment> appointments;
 
 }

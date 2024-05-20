@@ -1,7 +1,10 @@
 package dev.patika.veterinarymanagementsystemapi.v1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -31,4 +34,13 @@ public class Doctor {
 
     @Column(name = "doctor_city")
     private String city;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // Section - 9 : Relationships between entities
+    private List<Appointment> appointments;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "doctors", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // Section - 9 : Relationships between entities
+    private List<AvailableDate> availableDates;
+
 }

@@ -32,4 +32,9 @@ public class Vaccine {
     @Column(name = "vaccine_protection_end_date")
     @Temporal(TemporalType.DATE)
     private LocalDate endDate;
+
+    @ManyToOne(fetch = FetchType.EAGER) // Section - 9 : Relationships between entities
+    @JoinColumn(name = "vaccine_animal_id",referencedColumnName = "animal_id")
+    private Animal animal;
+
 }
