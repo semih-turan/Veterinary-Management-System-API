@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class AppointmentUpdateRequest {
 
     @NotNull(message = "ID cannot be null.")
-    private long id; //
+    private long id;
 
     @NotNull(message = "Animal ID cannot be null.")
     private Animal animal;

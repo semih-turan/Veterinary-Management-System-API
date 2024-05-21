@@ -78,6 +78,9 @@ public class VaccineManager implements VaccineService {
     @Override
     public Vaccine forceUpdate(Vaccine vaccine) {
         getById(vaccine.getId());
+        if(!animalRepository.existsById(vaccine.getAnimal().getId())){
+            throw new NotFoundAnimalException(Message.NOT_FOUND_ANIMAL);
+        }
         if (vaccine.getEndDate().isBefore(vaccine.getStartDate())) {
             throw new NoneSenseInformationException(Message.BAD_DATE);
         }

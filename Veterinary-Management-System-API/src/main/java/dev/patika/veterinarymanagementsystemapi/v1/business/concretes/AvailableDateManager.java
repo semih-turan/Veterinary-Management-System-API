@@ -41,7 +41,7 @@ public class AvailableDateManager implements AvailableDateService {
 
     @Override
     public AvailableDate update(AvailableDate availableDate) {
-        if(appointmentRepository.existsByAvailableDateId(availableDate.getId())){
+        if(appointmentRepository.existsByAvailableDate_Id(availableDate.getId())){
             throw new AppointmentAlreadyExists(Message.EXISTING_APPOINTMENT);
         }
         availableRepository.findById(availableDate.getId()).orElseThrow(()-> new NotFoundException(Message.NOT_FOUND_ID));
@@ -56,7 +56,7 @@ public class AvailableDateManager implements AvailableDateService {
 
     @Override
     public boolean deleteById(long id) {
-        if(appointmentRepository.existsByAvailableDateId(id)){
+        if(appointmentRepository.existsByAvailableDate_Id(id)){
             throw new AppointmentAlreadyExists(Message.EXISTING_APPOINTMENT);
         }
         availableRepository.delete(getById(id));

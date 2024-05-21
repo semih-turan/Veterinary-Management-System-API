@@ -10,12 +10,10 @@ import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
-    boolean existsByDoctorId(long id);
-    boolean existsByDateTime(LocalDateTime dateTime);
+    boolean existsByDoctor_Id(long id);
     boolean existsByDateTimeBetween(LocalDateTime startDate, LocalDateTime endDate);
-    boolean existsByAvailableDateId(long id);
-    boolean existsByDoctorIdAndAnimalId(long doctorId, long animalId);
+    boolean existsByAvailableDate_Id(long id);
+    boolean existsByDoctor_IdAndAnimal_Id(long doctor_id, long animal_id);
     List<Appointment> findByDateTimeBetweenAndDoctor(LocalDateTime startDate, LocalDateTime endDate, Doctor doctor);
     List<Appointment> findByDateTimeBetweenAndAnimal(LocalDateTime startDate, LocalDateTime endDate, Animal animal);
-
 }
