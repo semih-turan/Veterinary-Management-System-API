@@ -17,7 +17,7 @@ public class DoctorManager implements DoctorService {
     private final DoctorRepository doctorRepository;
 
     @Override
-    public Doctor save(Doctor doctor) {
+    public Doctor save(Doctor doctor) { // Criteria 15 - Is the doctor registered according to project requirements?
         if(doctorRepository.existsByEmailOrPhone(doctor.getEmail(),doctor.getPhone())){
             throw new NotUniqueValues(Message.NOT_UNIQUE);
         }

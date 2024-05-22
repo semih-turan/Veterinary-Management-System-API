@@ -20,7 +20,9 @@ public class VaccineManager implements VaccineService {
     private final AnimalRepository animalRepository;
 
     @Override
-    public Vaccine save(Vaccine vaccine) {
+    public Vaccine save(Vaccine vaccine) { // Criteria 21 - Proje isterlerine göre hayvana ait aşı kaydediliyor mu?
+
+        // Criteria 22 - Is the end date of protection checked during the new vaccine registration process? Is the registration of vaccines with expired protection dates done and the registration of unprotected vaccines blocked?
         if (animalRepository.findById(vaccine.getAnimal().getId()).isEmpty()) {
             throw new NotFoundAnimalException(Message.NOT_FOUND_ANIMAL);
         }
@@ -45,7 +47,7 @@ public class VaccineManager implements VaccineService {
     }
 
     @Override
-    public List<Vaccine> getAnimalVaccineById(long id) {
+    public List<Vaccine> getAnimalVaccineById(long id) { // Criteria 24 - Can all vaccination records for a specific animal be listed (all vaccination records for one animal only)?
         if (vaccineRepository.findByAnimalId(id).isEmpty()) {
             throw new NotFoundAnimalException(Message.NOT_FOUND_ANIMAL);
         }
@@ -53,7 +55,7 @@ public class VaccineManager implements VaccineService {
     }
 
     @Override
-    public List<Vaccine> findVaccinesByDateRange(LocalDate starDate, LocalDate endDate) {
+    public List<Vaccine> findVaccinesByDateRange(LocalDate starDate, LocalDate endDate) { // Criteria 23 - Filtering by vaccine protection expiry date: are vaccines with a vaccine protection expiry date within the entered date range correctly listed with animal information?
         if (vaccineRepository.findByEndDateBetween(starDate,endDate).isEmpty()) {
             throw new NotFoundObjectRequest(Message.NOT_FOUND);
         }

@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @ToString
 @Table(name = "animals")
-public class Animal {
+public class Animal { // Criteria 8 - Are entities defined correctly?
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,17 +40,17 @@ public class Animal {
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
 
-    @ManyToOne(fetch = FetchType.EAGER) // Section - 9 : Relationships between entities
+    @ManyToOne(fetch = FetchType.EAGER) // Criteria 9 - Are the relationships between entities (@OneToMany, @ManyToOne, @ManyToMany etc.) defined correctly?
     @JoinColumn(name = "animal_customer_id", referencedColumnName = "customer_id")
     private Customer customer;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // Criteria 9 - Are the relationships between entities (@OneToMany, @ManyToOne, @ManyToMany etc.) defined correctly?
     // Section - 9 : Relationships between entities
     private List<Vaccine> vaccines;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "animal", cascade = CascadeType.REMOVE) // Section - 9 : Relationships between entities
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.REMOVE) // Criteria 9 - Are the relationships between entities (@OneToMany, @ManyToOne, @ManyToMany etc.) defined correctly?
     private List<Appointment> appointments;
 
 }

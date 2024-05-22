@@ -1,3 +1,7 @@
+/**
+ * @author Semih Turan
+ * @since May 2024
+ */
 package dev.patika.veterinarymanagementsystemapi;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;

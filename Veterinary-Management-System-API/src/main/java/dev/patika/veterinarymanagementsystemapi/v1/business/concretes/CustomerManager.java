@@ -18,7 +18,7 @@ public class CustomerManager implements CustomerService {
     private final CustomerRepository customerRepository;
 
     @Override
-    public Customer save(Customer customer) {
+    public Customer save(Customer customer) { // Criteria 10 - Is the animal owner registered according to project requirements?
         if(customerRepository.existsByEmail(customer.getEmail()) || customerRepository.existsByPhone(customer.getPhone())){
             throw new NotUniqueValues(Message.NOT_UNIQUE);
         }
@@ -31,7 +31,7 @@ public class CustomerManager implements CustomerService {
     }
 
     @Override
-    public List<Customer> getByCustomerName(String name) {
+    public List<Customer> getByCustomerName(String name) { // Criteria 11 - Are animal owners filtered by name?
         if(customerRepository.findByName(name).isEmpty()){
             throw new NotFoundObjectRequest(Message.NOT_FOUND);
         }

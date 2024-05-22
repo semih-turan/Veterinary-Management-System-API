@@ -24,7 +24,7 @@ public class AvailableDateManager implements AvailableDateService {
     private final AppointmentRepository appointmentRepository;
 
     @Override
-    public AvailableDate save(AvailableDate availableDate) {
+    public AvailableDate save(AvailableDate availableDate) { // Criteria 16 - Is the doctor's available day recorded according to project requirements?
         if(doctorRepository.findById(availableDate.getDoctors().getId()).isEmpty()){
             throw new NotFoundDoctorException(Message.NOT_FOUND_DOCTOR);
         }

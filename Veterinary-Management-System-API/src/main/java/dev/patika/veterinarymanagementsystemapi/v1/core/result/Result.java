@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class Result {
+public class Result { // Criteria 26 - Are HTTP status codes used appropriately?
 
     private boolean status;
     private String message;

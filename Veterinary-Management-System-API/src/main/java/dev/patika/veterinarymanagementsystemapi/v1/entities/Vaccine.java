@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Table(name = "vaccines")
-public class Vaccine {
+public class Vaccine { // Criteria 8 - Are entities defined correctly?
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class Vaccine {
     @Temporal(TemporalType.DATE)
     private LocalDate endDate;
 
-    @ManyToOne(fetch = FetchType.EAGER) // Section - 9 : Relationships between entities
+    @ManyToOne(fetch = FetchType.EAGER) // Criteria 9 - Are the relationships between entities (@OneToMany, @ManyToOne, @ManyToMany etc.) defined correctly?
     @JoinColumn(name = "vaccine_animal_id",referencedColumnName = "animal_id")
     private Animal animal;
 

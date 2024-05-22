@@ -27,7 +27,9 @@ public class AppointmentManager implements AppointmentService {
     private final AnimalRepository animalRepository;
 
     @Override
-    public Appointment save(Appointment appointment) { // Section 18 - Save an appointment
+    public Appointment save(Appointment appointment) { // Criteria 17 - Are appointments booked according to project requirements?
+        // Criteria 18 - When creating an appointment, does it check whether the doctor has another appointment at that time and whether the doctor has a free day? Does it only allow appointment registration if the doctor does not have an appointment and has a free day?
+
         // Check if the specified doctor and animal exist
         if (!doctorRepository.existsById(appointment.getDoctor().getId()) || !animalRepository.existsById(appointment.getAnimal().getId())) {
             throw new NotFoundException(Message.NOT_FOUND_ID);
@@ -74,7 +76,7 @@ public class AppointmentManager implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> findAppointmentsByDateRangeAndDoctor(LocalDateTime startDate, LocalDateTime endDate, Doctor doctor) {
+    public List<Appointment> findAppointmentsByDateRangeAndDoctor(LocalDateTime startDate, LocalDateTime endDate, Doctor doctor) { // Criteria 20 - Are appointments filtered according to the date range and doctor entered by the user?
         if (doctorRepository.findById(doctor.getId()).isEmpty()) {
             throw new NotFoundDoctorException(Message.NOT_FOUND_DOCTOR);
         }
@@ -85,7 +87,7 @@ public class AppointmentManager implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> findAppointmentsByDateRangeAndAnimal(LocalDateTime startDate, LocalDateTime endDate, Animal animal) {
+    public List<Appointment> findAppointmentsByDateRangeAndAnimal(LocalDateTime startDate, LocalDateTime endDate, Animal animal) {   // Criteria 19 - Are appointments filtered according to the date range and animal entered by the user?
         if (animalRepository.findById(animal.getId()).isEmpty()) {
             throw new NotFoundAnimalException(Message.NOT_FOUND_ANIMAL);
         }

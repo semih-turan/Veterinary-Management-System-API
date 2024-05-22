@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @Table(name = "customers")
-public class Customer {
+public class Customer { // Criteria 8 - Are entities defined correctly?
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +38,7 @@ public class Customer {
     private String city;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // Section - 9 : Relationships between entities
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // Criteria 9 - Are the relationships between entities (@OneToMany, @ManyToOne, @ManyToMany etc.) defined correctly?
     private List<Animal> animalList;
 
 }

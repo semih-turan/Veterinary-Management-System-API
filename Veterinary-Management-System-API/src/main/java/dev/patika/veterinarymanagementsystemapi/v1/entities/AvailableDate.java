@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @ToString
 @Table(name = "availableDate")
-public class AvailableDate {
+public class AvailableDate { // Criteria 8 - Are entities defined correctly?
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +25,12 @@ public class AvailableDate {
     @Temporal(TemporalType.DATE)
     private LocalDate date;
 
-    @ManyToOne(fetch = FetchType.EAGER) // Section - 9 : Relationships between entities
+    @ManyToOne(fetch = FetchType.EAGER) // Criteria 9 - Are the relationships between entities (@OneToMany, @ManyToOne, @ManyToMany etc.) defined correctly?
     @JoinColumn(name = "available_date_doctor_id",referencedColumnName = "doctor_id")
     private Doctor doctors;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "availableDate",cascade = {CascadeType.REMOVE,CascadeType.MERGE},fetch = FetchType.LAZY) // Section - 9 : Relationships between entities
+    @OneToMany(mappedBy = "availableDate",cascade = {CascadeType.REMOVE,CascadeType.MERGE},fetch = FetchType.LAZY) // Criteria 9 - Are the relationships between entities (@OneToMany, @ManyToOne, @ManyToMany etc.) defined correctly?
     private List<Appointment> appointments;
 
 }

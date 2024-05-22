@@ -22,7 +22,7 @@ public class AnimalManager implements AnimalService {
 
 
     @Override
-    public Animal save(Animal animal) {
+    public Animal save(Animal animal) { // Criteria 12 - Are animals being registered according to project requirements?
         if (customerRepository.findById(animal.getCustomer().getId()).isEmpty()) {
             throw new NotFoundCustomerException(Message.NOT_FOUND_CUSTOMER);
         }
@@ -44,7 +44,7 @@ public class AnimalManager implements AnimalService {
     }
 
     @Override
-    public List<Animal> getAnimalByName(String name) {
+    public List<Animal> getAnimalByName(String name) { // Criteria 13 - Are animals filtered by name?
         if(animalRepository.findByName(name).isEmpty()){
             throw new NotFoundObjectRequest(Message.NOT_FOUND);
         }
@@ -52,7 +52,7 @@ public class AnimalManager implements AnimalService {
     }
 
     @Override
-    public List<Animal> getCustomerById(long animalCustomerId) {
+    public List<Animal> getCustomerById(long animalCustomerId) { // Criteria 14 - Does the process of viewing all animals of the entered animal owner registered in the system (view only animals belonging to one person) work successfully?
         if(animalRepository.findByCustomerId(animalCustomerId).isEmpty()){
             throw new NotFoundCustomerException(Message.NOT_FOUND_CUSTOMER);
         }

@@ -17,7 +17,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 import java.util.List;
 
 @ControllerAdvice
-public class GlobalExceptionHandler { // Section 25 - Custom Exception
+public class GlobalExceptionHandler { // Criteria 25 - Is Exception used (such as throwing an error if there is no data in the id entered in update, delete operations with id)
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResultData<List<String>>> handleValidationErrors(MethodArgumentNotValidException e) {
